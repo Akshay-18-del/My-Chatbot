@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Global resets ───────────────────────────── */
+*, *::before, *::after { 
+  box-sizing: border-box; 
+}
+
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+  background-color: #020617; 
+  color: #f1f5f9;
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* ── Custom scrollbar (Sleeker) ─────────────── */
+::-webkit-scrollbar        { width: 4px; }
+::-webkit-scrollbar-track  { background: transparent; }
+::-webkit-scrollbar-thumb  { background: rgba(255, 255, 255, 0.1); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.3); }
+
+/* ── Typing cursor blink ─────────────────────── */
+.cursor-blink::after {
+  content: '▌';
+  display: inline-block;
+  animation: blink 1s step-end infinite;
+  color: #a855f7; /* Purple glow */
+  margin-left: 2px;
+  text-shadow: 0 0 8px rgba(168, 85, 247, 0.6);
+}
+
+/* ── Markdown Overrides for Glass ────────────── */
+.prose pre {
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  overflow-x: auto;
+  margin: 0.75rem 0;
+}
+
+.prose code:not(pre code) {
+  background: rgba(255, 255, 255, 0.1);
+  color: #e2e8f0;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 0.85em;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.prose th, .prose td {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 0.75rem;
+}
+.prose th { background: rgba(0, 0, 0, 0.2); }
+
+textarea {
+  field-sizing: content;
+}
+
+/* ── Utilities ───────────────────────────────── */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* ── Sidebar active item glow ────────────────── */
+.conv-active {
+  background: linear-gradient(90deg, rgba(168, 85, 247, 0.15), transparent);
+  border-left: 2px solid #a855f7;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-10px) scale(1.02); }
+  100% { transform: translateY(0px) scale(1); }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
